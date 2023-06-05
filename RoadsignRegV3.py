@@ -21,9 +21,9 @@ while True:
     net.setInput(blob)
 
     layerName = net.getLayerNames()
-    # print(layerName)
-    # print(outputNames)
-    # print (net.getUnconnectedOutLayers())
+    print(layerName)
+    print(outputNames)
+    print (net.getUnconnectedOutLayers())
 
     outputNames = [layerName[i[0]-1] for i in net.getUnconnectedOutLayers()]
 
@@ -31,4 +31,4 @@ while True:
     print(outputs[0].shape)
 
     cv2.imshow('Image', img)
-    cv2.waitKey(1)
+    cv2.waitKey(1) 

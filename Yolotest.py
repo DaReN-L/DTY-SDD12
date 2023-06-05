@@ -8,6 +8,7 @@ from keras.preprocessing.image import img_to_array
 from matplotlib import pyplot
 from matplotlib.patches import Rectangle
 
+
 class BoundBox:
 	def __init__(self, xmin, ymin, xmax, ymax, objness = None, classes = None):
 		self.xmin = xmin
@@ -210,3 +211,9 @@ for i in range(len(v_boxes)):
 	print(v_labels[i], v_scores[i])
 # draw what we found
 draw_boxes(photo_filename, v_boxes, v_labels, v_scores)
+
+
+
+
+
+

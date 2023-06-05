@@ -11,9 +11,8 @@ img = cv2.imread(r'C:\Users\Darren\Documents\GitHub\DTY12\Stop-Sign.jpeg')
 # convert to hsv colorspace
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-# lower bound and upper bound for Green color
 lower_bound = np.array([0, 0, 100])	 
-upper_bound = np.array([45, 45, 255])
+upper_bound = np.array([0, 0, 255])
 
 # find the colors within the boundaries
 mask = cv2.inRange(hsv, lower_bound, upper_bound)
