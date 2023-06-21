@@ -4,9 +4,8 @@ import cv2
 import numpy as np
 
 # Reading the image
-img = cv2.imread(r'C:\Users\Darren\Documents\GitHub\DTY12\Stop-Sign.jpeg')
+img = cv2.imread(r'') #image path
 
-# Showing the output
 
 # convert to hsv colorspace
 hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
@@ -19,7 +18,7 @@ mask = cv2.inRange(hsv, lower_bound, upper_bound)
 #define kernel size  
 kernel = np.ones((7,7),np.uint8)
 
-# Remove unnecessary noise from mask
+# Remove noise from mask
 
 mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
 mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel)

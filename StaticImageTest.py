@@ -7,17 +7,17 @@ from tkinter import *
 
 
 
-img = cv2.imread(r"C:\Users\Darren\Documents\GitHub\DTY12\roadsigns\stopsign.png")
+img = cv2.imread(r"C:\Users\Darren\Documents\GitHub\DTY12\pedestrian_crossing_test.jpg") #image input 
 #C:\Users\Darren\Documents\GitHub\DTY12\Stop-intersection__ResizedImageWzM3NSwyNDBd.jpg
 # img = np.array(ImageGrab.grab(bbox=(0,40,800,640)))
 # img = cv2.VideoCapture(0)
-img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) 
-img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) 
+img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) #convert image to grat 
+img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  #convert image to RGB
   
 
-stop_data = cv2.CascadeClassifier('stop_data.xml') 
+stop_data = cv2.CascadeClassifier('ped_crossing_cascade.xml') #cascade data 
   
-found = stop_data.detectMultiScale(img_gray,  
+found = stop_data.detectMultiScale(img_gray,                #detect function
                                    minSize =(20, 20)) 
   
 amount_found = len(found) 
@@ -29,7 +29,7 @@ if amount_found != 0:
     for (x, y, width, height) in found: #drawing box around the found o bject. 
           
     
-        cv2.rectangle(img_rgb, (x, y),  
+        cv2.rectangle(img_rgb, (x, y),  #properties of the rectangle 
                       (x + height, y + width),  
                       (0, 255, 0), 5) 
         print("Found one")
@@ -101,7 +101,7 @@ if amount_found != 0:
 # cv2.waitKey(0)
 
 plt.subplot(1, 1, 1) 
-plt.imshow(img_rgb) 
+plt.imshow(img_rgb) #showing the image and the detection rectangle 
 plt.show() 
 
 

@@ -31,9 +31,7 @@ def draw_lines(image, lines, color=[0,255,255], thickness=5):
 
         for idx,i in enumerate(lines):
             for xyxy in i:
-                # These four lines:
-                # modified from http://stackoverflow.com/questions/21565994/method-to-return-the-equation-of-a-straight-line-given-two-points
-                # Used to calculate the definition of a line, given two sets of coords.
+                # used to calculate the middle of the line 
                 x_coords = (xyxy[0],xyxy[2])
                 y_coords = (xyxy[1],xyxy[3])
                 A = vstack([x_coords,ones(len(x_coords))]).T
