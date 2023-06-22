@@ -6,7 +6,7 @@ from PIL import ImageGrab
 from rpi_backlight import Backlight
 # Stop Sign and speed limit Cascade Classifier xml, these are datasets for HAAR 
 stop_sign = cv2.CascadeClassifier('cascade_stop_sign.xml')          
-speed_limit = cv2.CascadeClassifier('speedlimitcascade.xml')
+# speed_limit = cv2.CascadeClassifier('speedlimitcascade.xml')
 stopsignfound = False
 
 # cap = np.array(ImageGrab.grab(bbox=(1000,1000,1800,1600)))
@@ -107,7 +107,7 @@ for i in stop_sign_scaled: #if openCV found a stop sign, it changes the boolean 
 def quickbrightnessset(): #quick tunnel brightness settings
     tunnelbrightness = 20
     surfacebrightness = 100
-    if Backlight.brightness > tunnelbrightness:
+    if Backlight.brightness > tunnelbrightness: #if this is imported into raspberry pi and the 7" screen, this will change the screen brightness. 
         Backlight.brightness = surfacebrightness
     elif Backlight.brightness < surfacebrightness:
         Backlight.brightness = tunnelbrightness
@@ -134,7 +134,7 @@ quit = False
 
 while quit == False: #while the program is not quit, the window updates every 2 seconds. 
     window.update()
-    print("update")
+    # print("update")
     time.sleep(2)
     
 
@@ -142,7 +142,7 @@ window.mainloop()
 
 
 
-    # Detect the stop sign, x,y = origin points, w = width, h = height
+    # x,y = origin points, w = width, h = height
     # for (x, y, w, h) in stop_sign_scaled:
     #     # Draw rectangle around the stop sign
     #     stop_sign_rectangle = cv2.rectangle(img, (x,y),

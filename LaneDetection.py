@@ -122,7 +122,7 @@ def process_img(image):
                          ], np.int32) 
     
     processed_img = roi(processed_img, [vertices])
-    #thresholds for the lines
+    #thresholds for the linesg
     #notes: higher the threshold = less lines detected ?
     #                                     rho   theta   thresh            min length, max gap:        
     lines = cv2.HoughLinesP(processed_img, 1, np.pi/180, 45, np.array([]),  0,       200)
@@ -144,7 +144,7 @@ def process_img(image):
                 
             except Exception as e:
                 print(str(e))
-    except Exception as e:
+    except Exception as e: 
         pass
 
     return processed_img,original_image, m1 , m2 
@@ -173,11 +173,11 @@ while True:
     cv2.imshow('window2',cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB))
  
     if m1<0 and m2<0:   #logic of if lines are off to the side
-        right()
+        right() #when drifted to the right, this calls to the print function above 
     elif m1>0 and m2>0:
-        left()
+        left()  #when drifted to the left, this calls back to the print function above 
     else:
-        straight()
+        straight() #when the lane is straight and no warnings are needed. 
     #cv2.imshow('window',cv2.cvtColor(screen, cv2.COLOR_BGR2RGB))
     if cv2.waitKey(25) & 0xFF == ord('q'):  #display detected lines and video 
         cv2.destroyAllWindows()

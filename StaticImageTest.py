@@ -5,17 +5,17 @@ import numpy as np
 import tkinter as tk 
 from tkinter import *
 
+#beware this is a prototype and is not a part of the final product, this is to just prove the evidence in developments and working
 
+img = cv2.imread(r"") #image input, only works with absolute paths, there are sample images in the folder.
 
-img = cv2.imread(r"C:\Users\Darren\Documents\GitHub\DTY12\pedestrian_crossing_test.jpg") #image input 
-#C:\Users\Darren\Documents\GitHub\DTY12\Stop-intersection__ResizedImageWzM3NSwyNDBd.jpg
-# img = np.array(ImageGrab.grab(bbox=(0,40,800,640)))
-# img = cv2.VideoCapture(0)
+# img = np.array(ImageGrab.grab(bbox=(0,40,800,640)))  #video didn't work 
+# img = cv2.VideoCapture(0) #live camera didn't work
 img_gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY) #convert image to grat 
 img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)  #convert image to RGB
   
 
-stop_data = cv2.CascadeClassifier('ped_crossing_cascade.xml') #cascade data 
+stop_data = cv2.CascadeClassifier('cascade_stop_sign.xml') #cascade data 
   
 found = stop_data.detectMultiScale(img_gray,                #detect function
                                    minSize =(20, 20)) 
@@ -101,7 +101,7 @@ if amount_found != 0:
 # cv2.waitKey(0)
 
 plt.subplot(1, 1, 1) 
-plt.imshow(img_rgb) #showing the image and the detection rectangle 
+plt.imshow(img_rgb) #showing the image and the detection rectangle on a window 
 plt.show() 
 
 
